@@ -9,9 +9,9 @@ import tweepy
 
 # Variables that contains the user credentials to access Twitter API 
 ACCESS_TOKEN = '349383826-NGP5MtMxnrFM7sizHzKA66CkotPeKTXNY7qla1c2'
-ACCESS_SECRET = 'KrM3tkJQ3RF3fHSYBHz1oO5eNukUuA0aAC58qjmtTmgUL'
+ACCESS_SECRET = '<Your Key>'
 CONSUMER_KEY = 'fLwB8QL7VxB7Ow1G52O5Umu0P'
-CONSUMER_SECRET = 'XTNRS9bqm0FEXT8O1oWEiaGCwi5Um20JDYPg8dUocZZW8wlECs'
+CONSUMER_SECRET = '<Your consumer key>'
 
 # Setup tweepy to authenticate with Twitter credentials:
 
