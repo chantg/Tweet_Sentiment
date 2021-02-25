@@ -2,23 +2,22 @@ import sys
 import re
 
 
-#This function is O(nlogn) it has to sort all the tokens first
+#This function is O(nlogn) because it has to sort all the tokens first
 #alphabetically then it sorts all of the tokens by frequency
 def print_data(tokens):
     for k,val in sorted(sorted(tokens.items(),key = lambda x: x[0]),key = lambda x: x[1],reverse = True):
-        print("{0}\t{1}").format(k, val)
+        print("{0}\t{1}".format(k, val))
 
 def removeLinks(line):
-    newLine = re.sub("(http|ftp|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?","",line)
+    newLine = re.sub("(http|ftp|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?"," ",line)
     return newLine
-
-#This function runs in O(n) it only reads through the line once when it
+#This function runs in O(n) because it only reads through the line once when it
 #splits the line into individual words
 def tokenize(fn):
     tokens = dict()
     for line in fn:
         line  = removeLinks(line)
-        words = re.split('[^a-z0-9]', line.lower())
+        words = re.split('([^a-z0-9])', line.lower())
         for word in words:
             if word not in tokens and word != '' and len(word)>2:
                 tokens[word] = 1
@@ -27,7 +26,7 @@ def tokenize(fn):
     return tokens
 
 
-#This function runs in O(n) the tokenize function runs in O(n)
+#This function runs in O(n) because the tokenize function runs in O(n)
 #time complexity.
 def read_file(file_name):
     fn = open(file_name, 'r')
@@ -36,18 +35,18 @@ def read_file(file_name):
     return tokens
 
 
-#This function runs in O(1) time complexity all it is doing is assigning
+#This function runs in O(1) time complexity because all it is doing is assigning
 #a string to a variable
 def get_file_name(sav):
-    return "{0}".format(sav[1])
-    
+    print(sav[1])
+    file_name = "{0}".format(sav[1])
+    return file_name
 
 
-#This function runs in O(n) time complexity of the read_file function call
-#inside of that read_file function the tokenize function is called.
+#This function runs in O(n) time complexity because of the read_file function call
+# because inside of that function call the tokenize function is called.
 def main():
-    #sys.argv python command line agrument
-    file_name = get_file_name(sys.argv)
+    file_name = sys.argv[1]
     tokens = read_file(file_name)
     print_data(tokens)
 
